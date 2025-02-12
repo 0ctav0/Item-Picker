@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5;
-    [SerializeField] private float lookSpeed = 20;
+    [SerializeField] private float speed = 5;
     private CharacterController _controller;
     private PlayerInput _playerInput;
     private Transform _cameraTransform;
@@ -23,11 +22,6 @@ public class PlayerController : MonoBehaviour
         var move = new Vector3(input.x, 0, input.y);
         move = move.x * _cameraTransform.right + move.z * _cameraTransform.forward;
         move.y = 0;
-        _controller.Move(move * (moveSpeed * Time.deltaTime));
-
-
-        var look = _playerInput.actions["Look"].ReadValue<Vector2>();
-        var rotation = new Vector3(-look.y, look.x);
-        transform.Rotate(rotation * (lookSpeed * Time.deltaTime));
+        _controller.Move(move * (speed * Time.deltaTime));
     }
 }
