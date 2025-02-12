@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
-    public GarageManager Garage;
+    public CharacterController player;
+    public GarageManager garage;
+    public GrabManager grab;
 
     private List<IManager> _managers;
 
@@ -12,7 +14,7 @@ public class Managers : MonoBehaviour
     {
         _managers = new List<IManager>
         {
-            Garage
+            garage, grab,
         };
         StartCoroutine(StartupManagers());
     }
@@ -21,7 +23,7 @@ public class Managers : MonoBehaviour
     {
         foreach (var manager in _managers)
         {
-            StartCoroutine(manager.Startup());
+            StartCoroutine(manager.Startup(player));
         }
 
         yield return null;

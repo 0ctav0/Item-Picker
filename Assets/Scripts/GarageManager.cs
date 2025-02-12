@@ -7,7 +7,7 @@ public class GarageManager : MonoBehaviour, IManager
 
     [SerializeField] private Door _door;
 
-    public IEnumerator Startup()
+    public IEnumerator Startup(CharacterController player)
     {
         yield return new WaitForSeconds(1);
         _door.Open();

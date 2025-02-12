@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         var input = _playerInput.actions["Move"].ReadValue<Vector2>();
         var move = new Vector3(input.x, 0, input.y);
         move = move.x * _cameraTransform.right + move.z * _cameraTransform.forward;
-        move.y = 0;
+        move.y = -1f;
         _controller.Move(move * (speed * Time.deltaTime));
     }
 }

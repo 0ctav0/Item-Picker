@@ -1,9 +1,10 @@
 using System.Collections;
+using UnityEngine;
 
 public interface IManager
 {
     ManagerStatus Status { get; }
-    IEnumerator Startup();
+    IEnumerator Startup(CharacterController player);
 }
 
 public enum ManagerStatus
